@@ -25,7 +25,6 @@
     "baseUrl": "src/",
     "paths": {
       "@/components/*": ["components/*"],
-      "@/pages/*": ["pages/*"],
       "@/fonts/*": ["styles/fonts"],
       "@/styles/*": ["styles/*"],
       "@/utils/*": ["utils/*"],

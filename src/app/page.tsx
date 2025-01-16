@@ -1,21 +1,18 @@
 import React from "react"
-import Image from "next/image"
-import { spaceGrotesk, outfit } from "@/styles/fonts";
+// import { spaceGrotesk, outfit } from "@/styles/fonts";
+import LoginForm from "@/ui/login-signup/login-form";
+import PhotoStack from "@/ui/login-signup/photo-stack";
 
 export default function Page() {
 	return (
-		<main>
-      <div className={`w-full`}>
-			<Image
-				src="/voyager_2_launch_1.webp"
-				width={1500}
-				height={1800}
-				className="absolute inset-0 w-full h-full object-top object-cover"
-				alt="The Voyager II spacecraft"
-			/>
-      <div className={`${outfit.className} absolute top-[100px] right-[50px] text-white text-6xl`}>
-        <div className={`py-5 px-10 rounded-[25px] bg-transparent border-spacing-2 border-4 border-white shadow-md`}>Voyager III</div>
-      </div>
+		<main className={`max-h-full`}>
+      <div className={`w-full h-full max-h-screen grid grid-cols-12 gap-2`}>
+        <div className={`w-full h-full grid col-start-1 col-span-8 justify-center items-center`}>
+          <PhotoStack />
+        </div>
+        <div className={`w-full pe-10 h-full grid col-start-9 justify-center col-span-4 items-center`}>
+            <LoginForm />
+        </div>
       </div>
 		</main>
 	)

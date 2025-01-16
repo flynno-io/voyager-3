@@ -8,24 +8,36 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'app-background': 'url("/voyager_2_launch_1.webp")',
+        'voyager-hero': 'url("/voyager_xlg.jpg")',
       },
-      gridTemplateColumns: {
-        '13': 'repeat(13, minmax(0, 1fr))',
+      transitionDuration: {
+        '2000': '2000ms',
+        '3000': '3000ms',
+        '4000': '4000ms',
+        '5000': '5000ms',
       },
-      // TODO: customize colors for website.
       colors: {
-        blue: {
-          400: '#2589FE',
-          500: '#0070F3',
-          600: '#2F6FEB',
-        },
+        "baby-yellow": "#fffcc9"
       },
+      animation: {
+        slowScrollUp: 'slowScrollUp 60s linear infinite',
+        slowScrollDown: 'slowScrollDown 60s linear infinite',
+      }
     },
     keyframes: {
       shimmer: {
         '100%': {
           transform: 'translateX(100%)',
+        },
+      },
+      slowScrollUp: {
+        '100%': {
+          transform: 'translateY(calc(-50% - 0.25rem))',
+        },
+      },
+      slowScrollDown: {
+        '100%': {
+          transform: 'translateY(calc(0% + 0.25rem))',
         },
       },
     },
