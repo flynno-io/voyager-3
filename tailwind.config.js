@@ -32,12 +32,12 @@ module.exports = {
       },
       slowScrollUp: {
         '100%': {
-          transform: 'translateY(calc(-50% - 0.25rem))',
+          transform: 'translateY(calc(-50% - 0.25rem - 1px))',
         },
       },
       slowScrollDown: {
         '100%': {
-          transform: 'translateY(calc(0% + 0.25rem))',
+          transform: 'translateY(calc(0% + 0.25rem + 1px))',
         },
       },
     },

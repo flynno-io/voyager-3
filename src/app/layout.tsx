@@ -1,5 +1,6 @@
 import React from 'react';
 import '@/styles/global.css';
+import { outfit } from '@/fonts/*';
 
 //typescript
 import type { Metadata } from 'next';
@@ -17,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`bg-baby-yellow`}>{children}</body>
+      <body className={outfit.className}>{children}</body>
     </html>
   )
 }

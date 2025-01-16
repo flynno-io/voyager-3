@@ -14,6 +14,7 @@ interface Photo {
 export default function PhotoStack() {
   const photoScroller = useRef<HTMLDivElement>(null);
 
+  // Clone the images to create a scrolling effect
   useEffect(() => {
     const scroller = photoScroller.current;
 
@@ -28,7 +29,7 @@ export default function PhotoStack() {
 
       const innerScrollerChildren = Array.from(innerScroller.children);
 
-      if ( set === "two") {
+      if (set === "two") {
         innerScrollerChildren.reverse();
       }
 
@@ -36,7 +37,7 @@ export default function PhotoStack() {
       innerScrollerChildren.forEach((child: HTMLElement) => {
         const extendedPhotos = child.cloneNode(true) as HTMLElement;
         if (set === "one") {
-          innerScroller.appendChild(extendedPhotos)
+          innerScroller.appendChild(extendedPhotos);
         } else {
           innerScroller.prepend(extendedPhotos);
         }
@@ -53,15 +54,23 @@ export default function PhotoStack() {
   function renderImages(array: Photo[]) {
     return array.map((photo: Photo, index: number) => {
       return (
-        <Image
-          key={index}
-          src={photo.src}
-          width={photo.width}
-          height={photo.height}
-          alt={photo.alt}
-          priority={photo.priority}
-          className={`m-0 h-auto rounded-md shadow-2xl`}
-        />
+        <div key={index} className={`relative h-full w-full group`}>
+          <Image
+            src={photo.src}
+            width={photo.width}
+            height={photo.height}
+            alt={photo.alt}
+            priority={photo.priority}
+            className={`m-0 h-auto rounded-md shadow-2xl`}
+          />
+          <div
+            className={`flex flex-col items-center justify-center rounded-md
+              absolute top-0 invisible z-10 h-full w-full text-white 
+              group-hover:visible bg-black bg-opacity-60`}
+          >
+            <p className={`w-50 text-xl p-10 text-center`}>{photo.alt}</p>
+          </div>
+        </div>
       );
     });
   }
@@ -73,15 +82,15 @@ export default function PhotoStack() {
   return (
     <div
       ref={photoScroller}
-      className={`m-5 p-10 grid max-h-screen grid-cols-2 justify-center items-start gap-2 overflow-hidden`}
+      className={`mx-5 my-0 grid max-h-screen grid-cols-2 items-start justify-center gap-2 overflow-hidden px-10 py-0`}
     >
       <div
-        className={`scroll_inner_one animate-slowScrollUp col-start-1 grid justify-center gap-2`}
+        className={`scroll_inner_one animate-slowScrollUp hover:pause col-start-1 grid justify-center gap-2`}
       >
         {PhotoColOne}
       </div>
       <div
-        className={`scroll_inner_two animate-slowScrollDown transform -translate-y-[50%] col-start-2 grid justify-center gap-2`}
+        className={`scroll_inner_two animate-slowScrollDown hover:pause col-start-2 grid -translate-y-[50%] transform justify-center gap-2`}
       >
         {PhotoColTwo}
       </div>
