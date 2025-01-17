@@ -1,11 +1,46 @@
-import React from "react";
+"use client";
+import { useState } from "react";
+import VoyagerLogo from "@/ui/voyager-logo";
+import Input from "../Input";
+import Button from "../button";
 
 export default function LoginForm() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  // Function to Update the form values upon change
+  function handleChange(name: string, value: string) {
+    setFormData((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  }
+
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    console.log(formData);
+  }
+
   return (
-    <form className={`w-96 m-5 pe-5 flex h-auto flex-col space-y-2`}>
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <button type="submit">Login</button>
+    <form onSubmit={handleSubmit} className={`m-0 p-0 flex h-auto w-full gap-1 flex-col space-y-2`}>
+      <VoyagerLogo />
+      <Input
+        name="email"
+        value={formData.email}
+        type="email"
+        handleChange={handleChange}
+      />
+      <Input
+        name="password"
+        value={formData.password}
+        type="password"
+        handleChange={handleChange}
+      />
+      <Button type="submit">Login</Button>
     </form>
   );
 }

@@ -5,7 +5,6 @@ import { outfit } from '@/fonts/*';
 //typescript
 import type { Metadata } from 'next';
 
-
 export const meta: Metadata = {
   title: 'Voyager III',
   description: 'Read about the Voyager III spacecraft',

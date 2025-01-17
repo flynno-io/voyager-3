@@ -24,5 +24,5 @@ export const spaceMono = Space_Mono({
 export const outfit = Outfit({
   subsets: ['latin'],
   style: ['normal'],
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['100', '200','300','400', '500', '600', '700', '800', '900'],
 })

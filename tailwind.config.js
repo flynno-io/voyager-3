@@ -24,6 +24,9 @@ module.exports = {
         slowScrollDown: 'slowScrollDown 60s linear infinite',
       }
     },
+    variants: {
+      outline: ["focus"],
+    },  
     keyframes: {
       shimmer: {
         '100%': {

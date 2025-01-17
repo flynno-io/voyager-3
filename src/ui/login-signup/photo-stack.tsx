@@ -61,14 +61,14 @@ export default function PhotoStack() {
             height={photo.height}
             alt={photo.alt}
             priority={photo.priority}
-            className={`m-0 h-auto rounded-md shadow-2xl`}
+            className={`m-0 w-full h-auto rounded-md shadow-2xl`}
           />
           <div
             className={`flex flex-col items-center justify-center rounded-md
               absolute top-0 invisible z-10 h-full w-full text-white 
               group-hover:visible bg-black bg-opacity-60`}
           >
-            <p className={`w-50 text-xl p-10 text-center`}>{photo.alt}</p>
+            <p className={`w-50 text-xlg p-10 text-extra-light text-center`}>{photo.alt}</p>
           </div>
         </div>
       );
@@ -82,7 +82,7 @@ export default function PhotoStack() {
   return (
     <div
       ref={photoScroller}
-      className={`mx-5 my-0 grid max-h-screen grid-cols-2 items-start justify-center gap-2 overflow-hidden px-10 py-0`}
+      className={`mx-5 my-0 grid max-h-screen grid-cols-2 items-start justify-center gap-2 overflow-hidden py-0 px-12`}
     >
       <div
         className={`scroll_inner_one animate-slowScrollUp hover:pause col-start-1 grid justify-center gap-2`}
