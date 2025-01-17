@@ -60,18 +60,18 @@ const albumTwo = [
     alt: "Loading the Voyager payload into the capsule"
   },
   {
-    src: "/capsule_assembly_lg.jpg",
-    width: 888,
-    height: 1124,
-    priority: false,
-    alt: "The capsule being loaded onto the Voyager rocket"
-  },
-  {
     src: "/the_moon_xl.jpg",
     width: 800,
     height: 800,
     priority: false,
     alt: "The surface of the Moon"
+  },
+  {
+    src: "/capsule_assembly_lg.jpg",
+    width: 888,
+    height: 1124,
+    priority: false,
+    alt: "The capsule being loaded onto the Voyager rocket"
   },
   {
     src: "/payload_contents_md.jpg",

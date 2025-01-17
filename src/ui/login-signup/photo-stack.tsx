@@ -1,7 +1,7 @@
 "use client";
 import { useRef, useEffect } from "react";
 import Image from "next/image";
-import { albumOne, albumTwo } from "./images";
+import { albumOne, albumTwo } from "@/lib/images";
 
 interface Photo {
   src: string;

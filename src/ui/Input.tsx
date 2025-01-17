@@ -3,13 +3,14 @@ import { useState } from "react";
 import clsx from "clsx";
 
 interface InputProps {
+  id: string
   name: string;
   type: string;
   value: string;
   handleChange: Function;
 }
 
-const Input = ({ name, type, value, handleChange }: InputProps) => {
+const Input = ({ id, name, type, value, handleChange }: InputProps) => {
   // Managed state: error
   const [error, setError] = useState("");
 
@@ -31,14 +32,14 @@ const Input = ({ name, type, value, handleChange }: InputProps) => {
   // Function to handle change
   function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
     event.preventDefault();
-    const { name, value } = event.target as HTMLInputElement;
-    handleChange(name, value);
+    const { id, value } = event.target as HTMLInputElement;
+    handleChange(id, value);
   }
 
   function handleOnBlur(event: React.FocusEvent<HTMLInputElement>) {
     event.preventDefault();
-    const { name, value } = event.target as HTMLInputElement;
-    validate(name, value);
+    const { id, value } = event.target as HTMLInputElement;
+    validate(id, value);
   }
 
   // Placeholder text based on input name
@@ -66,7 +67,7 @@ const Input = ({ name, type, value, handleChange }: InputProps) => {
         <label
           htmlFor={name}
           className={clsx(
-            `text leading-2 py-1 ps-3 pe-1 leading-4 font-bold text-black`,
+            `text leading-2 py-1 ps-3 pe-1 leading-4 font-medium text-black`,
             {
               "text-red-500": error,
             }
@@ -75,7 +76,7 @@ const Input = ({ name, type, value, handleChange }: InputProps) => {
           {name.toUpperCase()}
         </label>
         <input
-          id={name}
+          id={id}
           type={type}
           value={value}
           name={name}

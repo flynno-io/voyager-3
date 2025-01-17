@@ -4,10 +4,13 @@ import VoyagerLogo from "@/ui/voyager-logo";
 import Input from "../Input";
 import Button from "../button";
 
-export default function LoginForm() {
+export default function SignUpForm() {
   const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
+    confirm: "",
   });
 
   // Function to Update the form values upon change
@@ -29,6 +32,13 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit} className={`m-0 p-0 flex h-auto w-full gap-1 flex-col space-y-2`}>
       <VoyagerLogo />
+      <Input 
+        id="firstName"
+        name="First Name"
+        value={formData["first name"]}
+        type="text"
+        handleChange={handleChange}
+      />
       <Input
         id="email"
         name="Email"
@@ -43,7 +53,7 @@ export default function LoginForm() {
         type="password"
         handleChange={handleChange}
       />
-      <Button isPrimary={true} type="submit">Login</Button>
+      <Button type="submit">Login</Button>
     </form>
   );
 }
