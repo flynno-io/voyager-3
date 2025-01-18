@@ -9,10 +9,11 @@ interface InputProps {
   value: string;
   valueToCompare?: string;
   isLogin?: boolean;
+  required?: boolean;
   handleChange: Function;
 }
 
-const Input = ({ id, name, type, value, valueToCompare, isLogin ,handleChange }: InputProps) => {
+const Input = ({ id, name, type, value, valueToCompare, isLogin, required, handleChange }: InputProps) => {
   // Managed state: error
   const [error, setError] = useState("");
 
@@ -102,13 +103,14 @@ const Input = ({ id, name, type, value, valueToCompare, isLogin ,handleChange }:
           value={value}
           name={name}
           placeholder={placeholder(id)}
+          required={required}
           onChange={handleOnChange}
           onBlur={handleOnBlur}
           className={`w-full flex-1 rounded-md border-none leading-4 font-light text-slate-800 placeholder-gray-500 placeholder- shadow-none focus:outline-none focus:ring-0`}
         />
       </div>
       <span
-          className={`w-full h-4 pt-0.5 pb-0 ps-3 text-red-500 text-sm self-start`}
+          className={`w-full h-4 p-1 ps-3 text-red-500 text-sm self-start`}
         >
           {error}
         </span>

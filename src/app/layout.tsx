@@ -5,6 +5,11 @@ import { outfit } from "@/fonts/*";
 import type { Metadata } from "next";
 import VoyagerLogo from "@/ui/voyager-logo";
 
+// Setup to use Font Awesome icons
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
+
 export const meta: Metadata = {
   title: "Voyager III",
   description: "Read about the Voyager III mission, one never to be forgotten.",
@@ -30,7 +35,7 @@ export default function RootLayout({
             >
               <VoyagerLogo />
               <div
-                className={`m-0 flex h-auto flex-col gap-1 space-y-2 p-0`}
+                className={`m-0 flex h-auto flex-col gap-2 p-0`}
               >
                 {children}
               </div>
