@@ -20,8 +20,8 @@ module.exports = {
         "baby-yellow": "#fffcc9"
       },
       animation: {
-        slowScrollUp: 'slowScrollUp 60s linear infinite',
-        slowScrollDown: 'slowScrollDown 60s linear infinite',
+        slowScrollUp: 'slowScrollUp 200s linear infinite',
+        slowScrollDown: 'slowScrollDown 200s linear infinite',
       }
     },
     variants: {

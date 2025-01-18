@@ -64,7 +64,7 @@ export default function PhotoStack() {
             className={`m-0 w-full h-auto rounded-md shadow-2xl`}
           />
           <div
-            className={`flex flex-col items-center justify-center rounded-md
+            className={`flex items-center justify-center rounded-md
               absolute top-0 invisible z-10 h-full w-full text-white 
               group-hover:visible bg-black bg-opacity-60`}
           >
@@ -82,15 +82,15 @@ export default function PhotoStack() {
   return (
     <div
       ref={photoScroller}
-      className={`mx-5 my-0 grid max-h-screen grid-cols-2 items-start justify-center gap-2 overflow-hidden py-0 px-12`}
+      className={`mx-5 my-0 py-0 px-12 flex items-start gap-2 max-h-screen overflow-hidden `}
     >
       <div
-        className={`scroll_inner_one animate-slowScrollUp hover:pause col-start-1 grid justify-center gap-2`}
+        className={`scroll_inner_one flex flex-col gap-2 flex-1 animate-slowScrollUp hover:pause`}
       >
         {PhotoColOne}
       </div>
       <div
-        className={`scroll_inner_two animate-slowScrollDown hover:pause col-start-2 grid -translate-y-[50%] transform justify-center gap-2`}
+        className={`scroll_inner_two flex flex-col gap-2 flex-1 animate-slowScrollDown hover:pause transform -translate-y-[50%] xl:hidden`}
       >
         {PhotoColTwo}
       </div>

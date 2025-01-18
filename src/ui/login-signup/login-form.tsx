@@ -28,7 +28,6 @@ export default function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className={`m-0 p-0 flex h-auto w-full gap-1 flex-col space-y-2`}>
-      <VoyagerLogo />
       <Input
         id="email"
         name="Email"
@@ -43,7 +42,7 @@ export default function LoginForm() {
         type="password"
         handleChange={handleChange}
       />
-      <Button isPrimary={true} type="submit">Login</Button>
+      <Button className={`m`} isPrimary={true} type="submit">Login</Button>
     </form>
   );
 }

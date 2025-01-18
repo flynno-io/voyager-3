@@ -30,12 +30,21 @@ export default function SignUpForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`m-0 p-0 flex h-auto w-full gap-1 flex-col space-y-2`}>
-      <VoyagerLogo />
-      <Input 
+    <form
+      onSubmit={handleSubmit}
+      className={`m-0 flex h-auto w-full flex-col gap-1 space-y-2 p-0`}
+    >
+      <Input
         id="firstName"
         name="First Name"
-        value={formData["first name"]}
+        value={formData["firstName"]}
+        type="text"
+        handleChange={handleChange}
+      />
+      <Input
+        id="lastName"
+        name="Last Name"
+        value={formData["lastName"]}
         type="text"
         handleChange={handleChange}
       />
@@ -53,7 +62,16 @@ export default function SignUpForm() {
         type="password"
         handleChange={handleChange}
       />
-      <Button type="submit">Login</Button>
+      <Input
+        id="confirm"
+        name="Confirm"
+        value={formData.confirm}
+        type="password"
+        handleChange={handleChange}
+      />
+      <Button isPrimary={true} type="submit">
+        Login
+      </Button>
     </form>
   );
 }
