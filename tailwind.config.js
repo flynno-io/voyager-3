@@ -20,7 +20,7 @@ module.exports = {
         "baby-yellow": "#fffcc9"
       },
       animation: {
-        slowScrollUp: 'slowScrollUp 200s linear infinite',
+        slowScrollUp: 'slowScrollUp 180s linear infinite',
         slowScrollDown: 'slowScrollDown 200s linear infinite',
       }
     },

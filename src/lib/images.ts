@@ -12,7 +12,7 @@ const albumOne = [ // 9 images
     width: 3029,
     height: 2410,
     priority: false,
-    alt: "Scientists constructing the Voyager II prope"
+    alt: "Scientists constructing the Voyager II probe"
   },
   {
     src: "/golden_record_lg.jpg",

@@ -19,14 +19,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={outfit.className}>
         <main className={`max-h-full w-full`}>
-          <div className={`flex h-screen w-full flex-row gap-0`}>
+          <div className={`flex h-screen w-full flex-row gap-0 align-center justify-center`}>
             <section
-              className={`h-full flex-auto max-w-[60%] items-center justify-center`}
+              className={`h-full flex-auto max-w-[60%] items-center justify-center hidden md:flex`}
             >
               <PhotoStack />
             </section>
             <section
-              className={`h-full w-full me-16 flex flex-col items-center justify-center`}
+              className={`h-full w-full m-0 md:me-16 flex flex-col items-center justify-center`}
             >
               <VoyagerLogo />
               <div
