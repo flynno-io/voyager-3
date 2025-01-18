@@ -19,7 +19,7 @@ export default function Button({
         {
           "bg-blue-500 text-white hover:bg-blue-400 active:bg-blue-600":
             isPrimary,
-          "bg-white border border-black text-black hover:bg-slate-100 hover:border-slate-100 active:bg-slate-200 acive:border-slate-200 ":
+          "bg-white border border-black text-black hover:bg-gray-300 hover:border-gray-300 active:bg-gray-400 acive:border-gray-400 ":
             !isPrimary,
         },
         className,

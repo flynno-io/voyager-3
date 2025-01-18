@@ -74,7 +74,7 @@ const Input = ({ id, name, type, value, handleChange }: InputProps) => {
         <label
           htmlFor={name}
           className={clsx(
-            `text leading-2 py-1 ps-3 pe-0 leading-4 font-medium text-black`,
+            `text-sm leading-2 py-1 ps-3 pe-0 leading-4 font-medium text-black`,
             {
               "text-red-500": error,
             }

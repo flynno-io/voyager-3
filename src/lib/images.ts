@@ -1,5 +1,5 @@
 
-const albumOne = [ // 9 images
+const albumOne = [ // 10 images
   {
     src: "/voyager_launch_xlg.jpg",
     width: 1821,
@@ -62,6 +62,13 @@ const albumOne = [ // 9 images
     height: 1231,
     priority: false,
     alt: "The Voyager mission patch"
+  },
+  {
+    src: "/pale_blue_dot_lg.webp",
+    width: 1920,
+    height: 1231,
+    priority: true,
+    alt: "The Pale Blue Dot - Earth from Voyager I"
   },
 ]
 
