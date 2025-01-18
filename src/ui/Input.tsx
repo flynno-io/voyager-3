@@ -7,22 +7,36 @@ interface InputProps {
   name: string;
   type: string;
   value: string;
+  valueToCompare?: string;
+  isLogin?: boolean;
   handleChange: Function;
 }
 
-const Input = ({ id, name, type, value, handleChange }: InputProps) => {
+const Input = ({ id, name, type, value, valueToCompare, isLogin ,handleChange }: InputProps) => {
   // Managed state: error
   const [error, setError] = useState("");
 
   // Function to validate each input value
-  function validate(name: string, value: string) {
-    if (value === "") {
-      setError("This field is required");
-    } else if (name === "email") {
-      // Regex to validate email
+  function validate(name: string, value: string, OtherValue?: string) {
+    if (value === "") { // Check if the input is empty
+      setError("This field is required") 
+    } else if ( name === "firstName" || name === "lastName" ) {
+      const nameRegex = /^[a-zA-Z]+$/;
+      !nameRegex.test(value)
+        ? setError("Must contain only letters")
+        : setError("");
+    } else if (name === "email") { // Check if the input is a valid email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       !emailRegex.test(value)
         ? setError("Invalid email address")
+        : setError("");
+    } else if (name === "password" && !isLogin) { // Check if the input is a strong password
+      value.length <= 8 
+        ? setError("Password must be 8 or more characters")
+        : setError("");
+    } else if (name === "confirm") { // Check if the input matches the password
+      value !== OtherValue
+        ? setError("Passwords do not match")
         : setError("");
     } else {
       setError("");
@@ -40,7 +54,7 @@ const Input = ({ id, name, type, value, handleChange }: InputProps) => {
   function handleOnBlur(event: React.FocusEvent<HTMLInputElement>) {
     event.preventDefault();
     const { id, value } = event.target as HTMLInputElement;
-    validate(id, value);
+    validate(id, value, id === "confirm" ? valueToCompare : undefined);
   }
 
   // Placeholder text based on input name

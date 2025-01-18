@@ -58,6 +58,7 @@ export default function SignUpForm() {
       <Input
         id="password"
         name="Password"
+        isLogin={false}
         value={formData.password}
         type="password"
         handleChange={handleChange}
@@ -66,11 +67,12 @@ export default function SignUpForm() {
         id="confirm"
         name="Confirm"
         value={formData.confirm}
+        valueToCompare={formData.password}
         type="password"
         handleChange={handleChange}
       />
       <Button isPrimary={true} type="submit">
-        Login
+        Sign Up
       </Button>
     </form>
   );

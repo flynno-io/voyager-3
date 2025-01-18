@@ -39,6 +39,7 @@ export default function LoginForm() {
         id="password"
         name="Password"
         value={formData.password}
+        isLogin={true}
         type="password"
         handleChange={handleChange}
       />
