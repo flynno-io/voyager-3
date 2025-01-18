@@ -54,14 +54,7 @@ const albumOne = [ // 10 images
     width: 512,
     height: 650,
     priority: false,
-    alt: "The Voyager 3 generator"
-  },
-  {
-    src: "/voyager_patch_lg.webp",
-    width: 1920,
-    height: 1231,
-    priority: false,
-    alt: "The Voyager mission patch"
+    alt: "The Voyager II generator"
   },
   {
     src: "/pale_blue_dot_lg.webp",
@@ -69,6 +62,13 @@ const albumOne = [ // 10 images
     height: 1231,
     priority: true,
     alt: "The Pale Blue Dot - Earth from Voyager I"
+  },
+  {
+    src: "/voyager_patch_lg.webp",
+    width: 1920,
+    height: 1231,
+    priority: false,
+    alt: "The Voyager mission patch"
   },
 ]
 
