@@ -68,7 +68,7 @@ export default function PhotoStack() {
               absolute top-0 invisible z-10 h-full w-full text-white 
               group-hover:visible bg-black bg-opacity-60`}
           >
-            <p className={`w-50 text-xlg p-10 text-extra-light text-center`}>{photo.alt}</p>
+            <p className={`w-50 text-base p-5 md:p-10 text-extra-light text-center`}>{photo.alt}</p>
           </div>
         </div>
       );
@@ -84,13 +84,15 @@ export default function PhotoStack() {
       ref={photoScroller}
       className={`mx-5 my-0 py-0 px-12 flex items-start gap-2 max-h-screen overflow-hidden `}
     >
+      {/* Photo Column One - flow up */}
       <div
         className={`scroll_inner_one flex flex-col gap-2 flex-1 animate-slowScrollUp hover:pause`}
       >
         {PhotoColOne}
       </div>
+      {/* Photo Column Two - float down */}
       <div
-        className={`scroll_inner_two flex flex-col gap-2 flex-1 animate-slowScrollDown hover:pause transform -translate-y-[50%] xl:hidden`}
+        className={`scroll_inner_two md:flex flex-col gap-2 flex-1 animate-slowScrollDown hover:pause transform -translate-y-[50%] hidden `}
       >
         {PhotoColTwo}
       </div>

@@ -47,7 +47,7 @@ const albumOne = [ // 9 images
     width: 500,
     height: 769,
     priority: false,
-    alt: "The Voyager II spacecraft in space"
+    alt: "The Voyager II spacecraft - digital rendition"
   },
   {
     src: "/spaceship_generator_md.jpg",
