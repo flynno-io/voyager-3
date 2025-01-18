@@ -7,10 +7,9 @@ export const meta: Metadata = {
 };
 
 export default function Page() {
-
-	return (
-		<section>
+  return (
+    <section>
       <LoginForm />
-		</section>
-	)
+    </section>
+  );
 }

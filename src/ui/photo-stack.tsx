@@ -54,21 +54,23 @@ export default function PhotoStack() {
   function renderImages(array: Photo[]) {
     return array.map((photo: Photo, index: number) => {
       return (
-        <div key={index} className={`relative h-full w-full group`}>
+        <div key={index} className={`group relative h-full w-full`}>
           <Image
             src={photo.src}
             width={photo.width}
             height={photo.height}
             alt={photo.alt}
             priority={photo.priority}
-            className={`m-0 w-full h-auto rounded-md shadow-2xl`}
+            className={`m-0 h-auto w-full rounded-md shadow-2xl`}
           />
           <div
-            className={`flex items-center justify-center rounded-md
-              absolute top-0 invisible z-10 h-full w-full text-white 
-              group-hover:visible bg-black bg-opacity-60`}
+            className={`invisible absolute top-0 z-10 flex h-full w-full items-center justify-center rounded-md bg-black bg-opacity-60 text-white group-hover:visible`}
           >
-            <p className={`w-50 text-base p-5 md:p-10 text-extra-light text-center`}>{photo.alt}</p>
+            <p
+              className={`w-50 text-extra-light p-5 text-center text-base md:p-10`}
+            >
+              {photo.alt}
+            </p>
           </div>
         </div>
       );
@@ -82,17 +84,17 @@ export default function PhotoStack() {
   return (
     <div
       ref={photoScroller}
-      className={`mx-5 my-0 py-0 px-12 flex items-start gap-2 max-h-screen overflow-hidden `}
+      className={`mx-5 my-0 flex max-h-screen items-start gap-2 overflow-hidden px-12 py-0`}
     >
       {/* Photo Column One - flow up */}
       <div
-        className={`scroll_inner_one flex flex-col gap-2 flex-1 animate-slowScrollUp hover:pause`}
+        className={`scroll_inner_one hover:pause flex flex-1 animate-slowScrollUp flex-col gap-2`}
       >
         {PhotoColOne}
       </div>
       {/* Photo Column Two - float down */}
       <div
-        className={`scroll_inner_two md:flex flex-col gap-2 flex-1 animate-slowScrollDown hover:pause transform -translate-y-[50%] hidden `}
+        className={`scroll_inner_two hover:pause hidden flex-1 -translate-y-[50%] transform animate-slowScrollDown flex-col gap-2 md:flex`}
       >
         {PhotoColTwo}
       </div>

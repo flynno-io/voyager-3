@@ -32,7 +32,7 @@ export default function LoginForm() {
   }
 
   return (
-    <div className={`m-0 relative`}>
+    <div className={`relative m-0`}>
       <form
         onSubmit={handleSubmit}
         className={`m-0 flex h-auto w-full flex-col gap-1 space-y-2 p-0`}
@@ -62,14 +62,19 @@ export default function LoginForm() {
           Sign up
         </Link>
       </div>
-      <div className={clsx(
-        `absolute visible my-5 flex flex-row gap-2 text-base border-2 border-red-500 p-4 rounded-md items-center justify-center`,
-        {
-          "hidden": !failedLogin,
-        }
-        )
-      }>
-        <FontAwesomeIcon icon={faCircleInfo} size="lg" className={`text-red-500`}/>
+      <div
+        className={clsx(
+          `visible absolute my-5 flex flex-row items-center justify-center gap-2 rounded-md border-2 border-red-500 p-4 text-base`,
+          {
+            hidden: !failedLogin,
+          },
+        )}
+      >
+        <FontAwesomeIcon
+          icon={faCircleInfo}
+          size="lg"
+          className={`text-red-500`}
+        />
         <p>Pssss...</p>
         <a href="/forgot-password" className={`text-blue-500`}>
           forgot your Password?

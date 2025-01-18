@@ -3,7 +3,7 @@ import { useState } from "react";
 import clsx from "clsx";
 
 interface InputProps {
-  id: string
+  id: string;
   name: string;
   type: string;
   value: string;
@@ -13,32 +13,43 @@ interface InputProps {
   handleChange: Function;
 }
 
-const Input = ({ id, name, type, value, valueToCompare, isLogin, required, handleChange }: InputProps) => {
+const Input = ({
+  id,
+  name,
+  type,
+  value,
+  valueToCompare,
+  isLogin,
+  required,
+  handleChange,
+}: InputProps) => {
   // Managed state: error
   const [error, setError] = useState("");
 
   // Function to validate each input value
   function validate(name: string, value: string, OtherValue?: string) {
-    if (value === "") { // Check if the input is empty
-      setError("This field is required") 
-    } else if ( name === "firstName" || name === "lastName" ) {
+    if (value === "") {
+      // Check if the input is empty
+      setError("This field is required");
+    } else if (name === "firstName" || name === "lastName") {
       const nameRegex = /^[a-zA-Z]+$/;
       !nameRegex.test(value)
         ? setError("Must contain only letters")
         : setError("");
-    } else if (name === "email") { // Check if the input is a valid email
+    } else if (name === "email") {
+      // Check if the input is a valid email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       !emailRegex.test(value)
         ? setError("Invalid email address")
         : setError("");
-    } else if (name === "password" && !isLogin) { // Check if the input is a strong password
-      value.length <= 8 
+    } else if (name === "password" && !isLogin) {
+      // Check if the input is a strong password
+      value.length <= 8
         ? setError("Password must be 8 or more characters")
         : setError("");
-    } else if (name === "confirm") { // Check if the input matches the password
-      value !== OtherValue
-        ? setError("Passwords do not match")
-        : setError("");
+    } else if (name === "confirm") {
+      // Check if the input matches the password
+      value !== OtherValue ? setError("Passwords do not match") : setError("");
     } else {
       setError("");
     }
@@ -77,22 +88,22 @@ const Input = ({ id, name, type, value, valueToCompare, isLogin, required, handl
   };
 
   return (
-    <div className={`m-0 p-0 w-full flex flex-col justify-right items-center`}>
+    <div className={`justify-right m-0 flex w-full flex-col items-center p-0`}>
       <div
         className={clsx(
           `mx-0.5 flex h-auto w-full items-baseline rounded-md border-2 border-black align-middle focus-within:ring-4`,
           {
             "border-red-500": error,
-          }
+          },
         )}
       >
         <label
           htmlFor={name}
           className={clsx(
-            `text-sm leading-2 py-1 ps-3 pe-0 leading-4 font-medium text-black`,
+            `leading-2 py-1 pe-0 ps-3 text-sm font-medium leading-4 text-black`,
             {
               "text-red-500": error,
-            }
+            },
           )}
         >
           {name.toUpperCase()}
@@ -106,14 +117,12 @@ const Input = ({ id, name, type, value, valueToCompare, isLogin, required, handl
           required={required}
           onChange={handleOnChange}
           onBlur={handleOnBlur}
-          className={`w-full flex-1 rounded-md border-none leading-4 font-light text-slate-800 placeholder-gray-500 placeholder- shadow-none focus:outline-none focus:ring-0`}
+          className={`placeholder- w-full flex-1 rounded-md border-none font-light leading-4 text-slate-800 placeholder-gray-500 shadow-none focus:outline-none focus:ring-0`}
         />
       </div>
-      <span
-          className={`w-full h-4 p-1 ps-3 text-red-500 text-sm self-start`}
-        >
-          {error}
-        </span>
+      <span className={`h-4 w-full self-start p-1 ps-3 text-sm text-red-500`}>
+        {error}
+      </span>
     </div>
   );
 };

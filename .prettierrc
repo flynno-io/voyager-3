@@ -1,4 +1,6 @@
 {
-  "tailwindFunctions": ["clsx"],
+  "tailwindFunctions": ["clsx", "tw"],
+  "tailwindStylesheet": "./src/styles/global.css",
+  "tailwindConfig": "./tailwind.config.js",
   "plugins": ["prettier-plugin-tailwindcss"]
 }

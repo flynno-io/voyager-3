@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Page() {
   return (
     <div className={`m-0 flex h-auto w-64 flex-col gap-1 space-y-2 p-0`}>
-      <Link href="/signup">
+      <Link href="/sign-up">
         <Button isPrimary={true} className={`w-full`}>
           Sign Up
         </Button>
