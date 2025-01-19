@@ -1,11 +1,14 @@
 "use client";
-import { useState } from "react";
-import VoyagerLogo from "@/ui/voyager-logo";
-import Input from "../Input";
-import Button from "../button";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect, useState } from "react";
 import Link from "next/link";
+import Input from "@/ui/input";
+import Button from "@/ui/button";
+import Error from "@/ui/error";
+import { signup } from "@/utils/actions";
 
 export default function SignUpForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -13,6 +16,20 @@ export default function SignUpForm() {
     password: "",
     confirm: "",
   });
+  const [signUpState, signUpAction, isPending] = useActionState(signup, {
+    success: false,
+    message: "",
+  });
+
+  // Redirect to blog page if login is successful
+  useEffect(() => {
+    function redirectToBlog() {
+      router.push("/transmissions");
+    }
+    if (signUpState.success) {
+      redirectToBlog();
+    }
+  }, [signUpState]);
 
   // Function to Update the form values upon change
   function handleChange(name: string, value: string) {
@@ -24,16 +41,11 @@ export default function SignUpForm() {
     });
   }
 
-  // Function to handle the form submission
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    console.log(formData);
-  }
-
   return (
-    <>
+    // relative class is added to the parent div to make the error message absolute
+    <div className={`relative m-0`}>
       <form
-        onSubmit={handleSubmit}
+        action={signUpAction}
         className={`m-0 flex h-auto w-full flex-col gap-1 space-y-2 p-0`}
       >
         <Input
@@ -100,8 +112,13 @@ export default function SignUpForm() {
             </a>
           </label>
         </div>
-        <Button isPrimary={true} type="submit">
-          Sign Up
+        <Button
+          className={`disabled:opacity-50 disabled:hover:cursor-wait`}
+          disabled={isPending}
+          isPrimary={true}
+          type="submit"
+        >
+          {isPending ? "Loading..." : "Sign Up"}
         </Button>
       </form>
       <div className={`my-2 ms-2 flex flex-row gap-2 text-sm`}>
@@ -110,6 +127,7 @@ export default function SignUpForm() {
           Login
         </Link>
       </div>
-    </>
+      <Error message={signUpState.message} />
+    </div>
   );
 }

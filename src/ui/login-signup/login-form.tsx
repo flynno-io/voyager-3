@@ -1,18 +1,34 @@
 "use client";
-import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-import Input from "../Input";
-import Button from "../button";
-import clsx from "clsx";
+import { useRouter } from "next/navigation";
+import { useActionState, useEffect, useState } from "react";
 import Link from "next/link";
+import Input from "@/ui/input";
+import Button from "@/ui/button";
+import Error from "@/ui/error";
+import { login } from "@/utils/actions";
 
 export default function LoginForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [failedLogin, setFailedLogin] = useState(false);
+  // Login Function to authenticate the user
+  const [loginState, loginAction, isPending] = useActionState(login, {
+    success: false,
+    message: "",
+    attempts: 0,
+  });
+
+  // Redirect to blog page if login is successful
+  useEffect(() => {
+    function redirectToBlog() {
+      router.push("/transmissions");
+    }
+    if (loginState.success) {
+      redirectToBlog();
+    }
+  }, [loginState]);
 
   // Function to Update the form values upon change
   function handleChange(name: string, value: string) {
@@ -24,17 +40,17 @@ export default function LoginForm() {
     });
   }
 
-  // Function to handle the form submission
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setFailedLogin(true);
-    console.log(formData);
-  }
+  // Function to handle form submission
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   loginAction(formData);
+  // }
 
   return (
+    // relative class is added to the parent div to make the error message absolute
     <div className={`relative m-0`}>
       <form
-        onSubmit={handleSubmit}
+        action={loginAction}
         className={`m-0 flex h-auto w-full flex-col gap-1 space-y-2 p-0`}
       >
         <Input
@@ -52,8 +68,13 @@ export default function LoginForm() {
           type="password"
           handleChange={handleChange}
         />
-        <Button className={`m`} isPrimary={true} type="submit">
-          Login
+        <Button
+          className={`disabled:opacity-50 disabled:hover:cursor-wait`}
+          disabled={isPending}
+          isPrimary={true}
+          type="submit"
+        >
+          {isPending ? "Loading..." : "Login"}
         </Button>
       </form>
       <div className={`my-2 ms-2 flex flex-row gap-2 text-sm`}>
@@ -62,24 +83,7 @@ export default function LoginForm() {
           Sign up
         </Link>
       </div>
-      <div
-        className={clsx(
-          `visible absolute my-5 flex flex-row items-center justify-center gap-2 rounded-md border-2 border-red-500 p-4 text-base`,
-          {
-            hidden: !failedLogin,
-          },
-        )}
-      >
-        <FontAwesomeIcon
-          icon={faCircleInfo}
-          size="lg"
-          className={`text-red-500`}
-        />
-        <p>Pssss...</p>
-        <a href="/forgot-password" className={`text-blue-500`}>
-          forgot your Password?
-        </a>
-      </div>
+      <Error message={loginState.message} />
     </div>
   );
 }
