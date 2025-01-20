@@ -43,7 +43,9 @@ export default function SignUpForm() {
 
   return (
     // relative class is added to the parent div to make the error message absolute
-    <div className={`relative m-0`}>
+    <div
+      className={`relative m-0 flex h-auto w-64 flex-col items-baseline gap-1 space-y-2 p-0`}
+    >
       <form
         action={signUpAction}
         className={`m-0 flex h-auto w-full flex-col gap-1 space-y-2 p-0`}

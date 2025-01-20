@@ -94,7 +94,7 @@ export default function PhotoStack() {
       </div>
       {/* Photo Column Two - float down */}
       <div
-        className={`scroll_inner_two hover:pause hidden flex-1 -translate-y-[50%] transform animate-slowScrollDown flex-col gap-2 md:flex`}
+        className={`scroll_inner_two hover:pause hidden flex-1 -translate-y-[50%] transform animate-slowScrollDown flex-col gap-2 xl:flex`}
       >
         {PhotoColTwo}
       </div>
