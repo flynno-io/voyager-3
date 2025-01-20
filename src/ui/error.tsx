@@ -6,7 +6,7 @@ export default function Error({ message }: { message: string }) {
   return (
     <div
       className={clsx(
-        `visible absolute my-5 flex w-full flex-row items-center justify-start gap-5 rounded-md border-2 border-red-500 p-4 text-base`,
+        `visible absolute -bottom-20 my-5 flex w-full flex-row items-center justify-start gap-5 rounded-md border-2 border-red-500 p-4 text-base`,
         {
           hidden: !message,
         },

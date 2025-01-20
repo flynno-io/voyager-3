@@ -3,10 +3,10 @@
 module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    backgroundImage: {
+      "blog-hero": "url('/voyager_md.jpg')",
+    },
     extend: {
-      backgroundImage: {
-        "blog-hero": "url('/public/voyager_xlg.jpg')",
-      },
       transitionDuration: {
         // used for PhotoStack component
         2000: "2000ms",

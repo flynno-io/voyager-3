@@ -10,7 +10,9 @@ export default function VoyagerLogo({ className }: { className?: string }) {
       )}
     >
       <p className="text-center text-[55px]">VOYAGER III</p>
-      <p className={`${spaceMono.className} text-md text-center text-gray-800`}>
+      <p
+        className={`${spaceMono.className} ${className} text-md text-center text-gray-800`}
+      >
         The journey of one lifetime
       </p>
     </div>
