@@ -4,7 +4,7 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     backgroundImage: {
-      "blog-hero": "url('/voyager_md.jpg')",
+      "blog-hero": "url('/voyager_xlg.jpg')",
     },
     extend: {
       transitionDuration: {

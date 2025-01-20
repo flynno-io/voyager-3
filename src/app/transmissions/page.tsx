@@ -1,4 +1,5 @@
 import LoginForm from "@/ui/login-signup/login-form";
+import Posts from "@/ui/transmissions/posts";
 import type { Metadata } from "next";
 
 export const meta: Metadata = {
@@ -6,10 +7,12 @@ export const meta: Metadata = {
   description: "Login to continue following the Voyager III mission.",
 };
 
-export default function Page() {
+export default async function Page() {
   return (
     <section>
-      <h2>Welcome to the Transmissions page.</h2>
+      <p className={`py-2`}>Breadcumb / will / go / here</p>
+      <h1 className={`mb-4 text-4xl font-bold`}>Transmissions</h1>
+      <Posts />
     </section>
   );
 }

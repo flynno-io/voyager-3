@@ -5,7 +5,7 @@ export async function login(prevState, queryData) {
     await new Promise((resolve) => {
       setTimeout(resolve, 2000);
     });
-    // TODO: Implement the real login function to use GraphQL
+    // TODO: Implement the real login function to use MongoDB
     return {
       success: true,
       message: "",
