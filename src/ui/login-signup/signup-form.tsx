@@ -1,35 +1,35 @@
-"use client";
-import { useRouter } from "next/navigation";
-import { useActionState, useEffect, useState } from "react";
-import Link from "next/link";
-import Input from "@/ui/input";
-import Button from "@/ui/button";
-import Error from "@/ui/error";
-import { signup } from "@/utils/actions";
+"use client"
+import { useRouter } from "next/navigation"
+import { useActionState, useEffect, useState } from "react"
+import Link from "next/link"
+import Input from "@/ui/input"
+import Button from "@/ui/button"
+import Error from "@/ui/error"
+import { signup } from "@/lib/actions"
 
 export default function SignUpForm() {
-  const router = useRouter();
+  const router = useRouter()
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     password: "",
     confirm: "",
-  });
+  })
   const [signUpState, signUpAction, isPending] = useActionState(signup, {
     success: false,
     message: "",
-  });
+  })
 
   // Redirect to blog page if login is successful
   useEffect(() => {
     function redirectToBlog() {
-      router.push("/transmissions");
+      router.push("/transmissions")
     }
     if (signUpState.success) {
-      redirectToBlog();
+      redirectToBlog()
     }
-  }, [signUpState]);
+  }, [signUpState])
 
   // Function to Update the form values upon change
   function handleChange(name: string, value: string) {
@@ -37,8 +37,8 @@ export default function SignUpForm() {
       return {
         ...prev,
         [name]: value,
-      };
-    });
+      }
+    })
   }
 
   return (
@@ -129,5 +129,5 @@ export default function SignUpForm() {
       </div>
       <Error message={signUpState.message} />
     </div>
-  );
+  )
 }

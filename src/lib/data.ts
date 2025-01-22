@@ -1,13 +1,27 @@
-export async function fetchPostById(id: number) {
-  console.log("param id", id);
+import { Post, User } from "@/lib/models"
+import mongoose from "mongoose"
+
+// Fetch all posts
+export async function fetchPosts() {
   try {
-    const res = await fetch("http://localhost:3000/api/posts", {
-      cache: "no-store", // Adjust caching if necessary
-    });
-    const posts = await res.json(); // returns an array of objects
-    const post = posts.find((post) => post.id === id);
-    return post;
+    const posts = await Post.find()
+    return posts
   } catch (error) {
-    console.error(error);
+    console.error(error)
+  }
+}
+
+// Get a single post by ID
+export async function fetchPostById(id: string) {
+  console.log("fetchPostById", typeof id, id)
+  try {
+    // Validate the `id`
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      throw new Error(`Invalid _id format: ${id}`)
+    }
+    const post = await Post.findById(id)
+    return post
+  } catch (error) {
+    console.error(error)
   }
 }

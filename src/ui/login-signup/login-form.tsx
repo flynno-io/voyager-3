@@ -1,34 +1,34 @@
-"use client";
-import { useRouter } from "next/navigation";
-import { useActionState, useEffect, useState } from "react";
-import Link from "next/link";
-import Input from "@/ui/input";
-import Button from "@/ui/button";
-import Error from "@/ui/error";
-import { login } from "@/utils/actions";
+"use client"
+import { useRouter } from "next/navigation"
+import { useActionState, useEffect, useState } from "react"
+import Link from "next/link"
+import Input from "@/ui/input"
+import Button from "@/ui/button"
+import Error from "@/ui/error"
+import { login } from "@/lib/actions"
 
 export default function LoginForm() {
-  const router = useRouter();
+  const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-  });
+  })
   // Login Function to authenticate the user
   const [loginState, loginAction, isPending] = useActionState(login, {
     success: false,
     message: "",
     attempts: 0,
-  });
+  })
 
   // Redirect to blog page if login is successful
   useEffect(() => {
     function redirectToBlog() {
-      router.push("/transmissions");
+      router.push("/transmissions")
     }
     if (loginState.success) {
-      redirectToBlog();
+      redirectToBlog()
     }
-  }, [loginState]);
+  }, [loginState])
 
   // Function to Update the form values upon change
   function handleChange(name: string, value: string) {
@@ -36,8 +36,8 @@ export default function LoginForm() {
       return {
         ...prev,
         [name]: value,
-      };
-    });
+      }
+    })
   }
 
   // Function to handle form submission
@@ -85,5 +85,5 @@ export default function LoginForm() {
       </div>
       <Error message={loginState.message} />
     </div>
-  );
+  )
 }

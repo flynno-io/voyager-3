@@ -1,10 +1,8 @@
-import PostCard from "@/ui/transmissions/post-card";
+import PostCard from "@/ui/transmissions/post-card"
+import { fetchPosts } from "@/lib/data"
 
 export default async function Posts() {
-  const res = await fetch("http://localhost:3000/api/posts", {
-    cache: "no-store", // Adjust caching if necessary
-  });
-  const posts = await res.json();
+  const posts = await fetchPosts()
 
   function renderPosts() {
     return posts.map((post) => {
@@ -16,9 +14,9 @@ export default async function Posts() {
           description={post.description}
           number={post.number}
         />
-      );
-    });
+      )
+    })
   }
 
-  return <div>{renderPosts()}</div>;
+  return <div>{renderPosts()}</div>
 }

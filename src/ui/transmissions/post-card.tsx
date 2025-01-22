@@ -17,22 +17,23 @@ export default function PostCard({
   return (
     <article
       key={id}
-      className={`mb-6 flex justify-between rounded-lg bg-yellow-50 p-6 shadow-md`}
+      className={`my-3 flex h-28 items-start justify-between rounded-md border border-slate-300 p-3 shadow-sm`}
     >
-      <div className={`flex w-full flex-1 flex-col items-start justify-normal`}>
-        <div className={`flex items-center justify-between gap-3`}>
-          <h2 className={`text-2xl font-bold`}>{title}</h2>
-          <p className={`text-gray-400`}>#{number}</p>
-        </div>
+      <p
+        className={`flex h-full min-w-16 flex-col items-start justify-center p-2 text-2xl text-gray-400`}
+      >
+        #{number}
+      </p>
+      <div className={`m-0 flex w-full flex-col p-0`}>
+        <h2 className={`text-2xl font-bold`}>{title}</h2>
         <p className={`text-gray-500`}>{description}</p>
       </div>
-      <div
-        className={`mt-4 flex max-w-32 flex-1 flex-col items-center justify-between`}
+      <Link
+        className={`flex h-full w-[200px] flex-col justify-center p-2`}
+        href={`/transmissions/${id}`}
       >
-        <Link href={`/transmissions/${id}`}>
-          <Button isPrimary={true}>Read More</Button>
-        </Link>
-      </div>
+        <Button isPrimary={true}>Read More</Button>
+      </Link>
     </article>
   );
 }
