@@ -1,16 +1,16 @@
-"use client";
-import { useState } from "react";
-import clsx from "clsx";
+"use client"
+import { useState } from "react"
+import clsx from "clsx"
 
 interface InputProps {
-  id: string;
-  name: string;
-  type: string;
-  value: string;
-  valueToCompare?: string;
-  isLogin?: boolean;
-  required?: boolean;
-  handleChange: Function;
+  id: string
+  name: string
+  type: string
+  value: string
+  valueToCompare?: string
+  isLogin?: boolean
+  required?: boolean
+  handleChange: Function
 }
 
 const Input = ({
@@ -24,68 +24,66 @@ const Input = ({
   handleChange,
 }: InputProps) => {
   // Managed state: error
-  const [error, setError] = useState("");
+  const [error, setError] = useState("")
 
   // Function to validate each input value
   function validate(name: string, value: string, OtherValue?: string) {
     if (value === "") {
       // Check if the input is empty
-      setError("This field is required");
+      setError("This field is required")
     } else if (name === "firstName" || name === "lastName") {
-      const nameRegex = /^[a-zA-Z]+$/;
+      const nameRegex = /^[a-zA-Z]+$/
       !nameRegex.test(value)
         ? setError("Must contain only letters")
-        : setError("");
+        : setError("")
     } else if (name === "email") {
       // Check if the input is a valid email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      !emailRegex.test(value)
-        ? setError("Invalid email address")
-        : setError("");
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+      !emailRegex.test(value) ? setError("Invalid email address") : setError("")
     } else if (name === "password" && !isLogin) {
       // Check if the input is a strong password
       value.length <= 8
         ? setError("Password must be 8 or more characters")
-        : setError("");
+        : setError("")
     } else if (name === "confirm") {
       // Check if the input matches the password
-      value !== OtherValue ? setError("Passwords do not match") : setError("");
+      value !== OtherValue ? setError("Passwords do not match") : setError("")
     } else {
-      setError("");
+      setError("")
     }
   }
 
   // Function to update state with input values
   function handleOnChange(event: React.ChangeEvent<HTMLInputElement>) {
-    event.preventDefault();
-    const { id, value } = event.target as HTMLInputElement;
-    handleChange(id, value);
+    event.preventDefault()
+    const { id, value } = event.target as HTMLInputElement
+    handleChange(id, value)
   }
 
   // Function to validate inputs on blur
   function handleOnBlur(event: React.FocusEvent<HTMLInputElement>) {
-    event.preventDefault();
-    const { id, value } = event.target as HTMLInputElement;
-    validate(id, value, id === "confirm" ? valueToCompare : undefined);
+    event.preventDefault()
+    const { id, value } = event.target as HTMLInputElement
+    validate(id, value, id === "confirm" ? valueToCompare : undefined)
   }
 
   // Placeholder text based on input name
   const placeholder = (id: string) => {
     switch (id) {
       case "firstName":
-        return "Alan";
+        return "Alan"
       case "lastName":
-        return "Shepard";
+        return "Shepard"
       case "email":
-        return "a.shepard@nasa.com";
+        return "a.shepard@nasa.com"
       case "password":
-        return "Enter a password";
+        return "Enter a password"
       case "confirm":
-        return "Confirm password";
+        return "Confirm password"
       default:
-        return "";
+        return ""
     }
-  };
+  }
 
   return (
     <div className={`justify-right m-0 flex w-full flex-col items-center p-0`}>
@@ -124,7 +122,7 @@ const Input = ({
         {error}
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

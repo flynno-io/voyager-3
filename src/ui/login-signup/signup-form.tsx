@@ -5,7 +5,7 @@ import Link from "next/link"
 import Input from "@/ui/input"
 import Button from "@/ui/button"
 import Error from "@/ui/error"
-import { signup } from "@/lib/actions"
+import { signup } from "@/lib/actions/auth"
 
 export default function SignUpForm() {
   const router = useRouter()
@@ -17,19 +17,10 @@ export default function SignUpForm() {
     confirm: "",
   })
   const [signUpState, signUpAction, isPending] = useActionState(signup, {
-    success: false,
+    errors: {},
     message: "",
+    success: true,
   })
-
-  // Redirect to blog page if login is successful
-  useEffect(() => {
-    function redirectToBlog() {
-      router.push("/transmissions")
-    }
-    if (signUpState.success) {
-      redirectToBlog()
-    }
-  }, [signUpState])
 
   // Function to Update the form values upon change
   function handleChange(name: string, value: string) {
@@ -43,7 +34,9 @@ export default function SignUpForm() {
 
   return (
     // relative class is added to the parent div to make the error message absolute
-    <div className={`relative flex h-auto flex-col gap-1 space-y-2`}>
+    <div
+      className={`mb-10 flex h-auto w-auto flex-col gap-1 space-y-2 md:max-w-[350px]`}
+    >
       <form
         action={signUpAction}
         className={`m-0 flex h-auto w-full flex-col gap-1 space-y-2 p-0`}
@@ -101,15 +94,18 @@ export default function SignUpForm() {
           />
           <label
             htmlFor="terms"
-            className={`leading-2 flex gap-1 py-1 pe-0 ps-3 text-sm font-medium leading-4 text-black`}
+            className={`leading-2 flex gap-1 py-1 pe-0 ps-3 text-sm font-light leading-4 text-black`}
           >
-            <p>I agree to the terms and conditions</p>
-            <a
-              className={`text-blue-500 underline`}
-              href="/terms-and-conditions"
-            >
-              here
-            </a>
+            <p>
+              I agree to the{" "}
+              <Link
+                href="/terms-and-conditions"
+                className={`font-medium text-blue-500 underline`}
+              >
+                terms and conditions
+              </Link>{" "}
+              of use
+            </p>
           </label>
         </div>
         <Button
@@ -127,7 +123,11 @@ export default function SignUpForm() {
           Login
         </Link>
       </div>
-      <Error message={signUpState.message} />
+      <Error
+        errors={signUpState?.errors}
+        message={signUpState?.message}
+        hideError={signUpState?.success}
+      />
     </div>
   )
 }

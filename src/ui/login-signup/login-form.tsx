@@ -5,7 +5,7 @@ import Link from "next/link"
 import Input from "@/ui/input"
 import Button from "@/ui/button"
 import Error from "@/ui/error"
-import { login } from "@/lib/actions"
+import { login } from "@/lib/actions/auth"
 
 export default function LoginForm() {
   const router = useRouter()
@@ -39,12 +39,6 @@ export default function LoginForm() {
       }
     })
   }
-
-  // Function to handle form submission
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   loginAction(formData);
-  // }
 
   return (
     // relative class is added to the parent div to make the error message absolute
