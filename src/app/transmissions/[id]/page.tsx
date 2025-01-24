@@ -13,6 +13,10 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   const id = params.id
   const post = await fetchPostById(id)
 
+  if (!post) {
+    return <div>Loading Post...</div>
+  }
+
   // TODO: Add breadcrumb to top of page
   // TODO: Add fetch to get blog post data
   // TODO: Add error handling for fetch

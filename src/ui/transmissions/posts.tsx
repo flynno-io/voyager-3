@@ -4,6 +4,10 @@ import { fetchPosts } from "@/lib/data"
 export default async function Posts() {
   const posts = await fetchPosts()
 
+  if (!posts) {
+    return <div>Loading Posts...</div>
+  }
+
   function renderPosts() {
     return posts.map((post) => {
       return (
