@@ -2,7 +2,7 @@
 
 import { useActionState, useState } from "react"
 import Link from "next/link"
-import Input from "../input"
+import Input from "./input"
 import Button from "@/ui/button"
 import Error from "@/ui/error"
 import { login } from "@/lib/actions/auth"
