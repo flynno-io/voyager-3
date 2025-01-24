@@ -16,7 +16,7 @@ export default function LoginForm() {
   // TODO: Update login form error handling and loginAction definition and use
   // Login Function to authenticate the user
   const [loginState, loginAction, isPending] = useActionState(login, {
-    success: false,
+    errors: {},
     message: "",
     attempts: 0,
   })

@@ -1,5 +1,21 @@
 import { z } from "zod"
 
+export const LoginFormSchema = z.object({
+  email: z.string().email({ message: "Please enter a valid email." }).trim(),
+  password: z.string().min(1, { message: "Please enter your password." }),
+})
+
+export type LoginFormState =
+  | {
+      errors?: {
+        email?: string[]
+        password?: string[]
+      }
+      message?: string
+      attempts?: number
+    }
+  | undefined
+
 export const SignupFormSchema = z
   .object({
     firstName: z
@@ -26,11 +42,6 @@ export const SignupFormSchema = z
     message: "Passwords do not match",
     path: ["confirm"], // path of error
   })
-
-export const LoginFormSchema = z.object({
-  email: z.string().email({ message: "Please enter a valid email." }).trim(),
-  password: z.string().min(1, { message: "Please enter your password." }),
-})
 
 export type SignUpFormState =
   | {

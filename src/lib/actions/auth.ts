@@ -1,24 +1,72 @@
 "use server"
 
-import { SignupFormSchema, SignUpFormState } from "@/lib/definitions"
+import {
+  LoginFormState,
+  LoginFormSchema,
+  SignupFormSchema,
+  SignUpFormState,
+} from "@/lib/definitions"
 import { createSession, deleteSession } from "@/lib/session"
 import connectDB from "@/lib/connectDB"
 import { User } from "@/lib/models"
 import { redirect } from "next/navigation"
 
 // Login the user
-export async function login(prevState, formData) {
-  const email = formData.get("Email")
-  const password = formData.get("Password")
-  return {
-    success: true,
-    message: "",
+export async function login(state: LoginFormState, formData: FormData) {
+  // Validate the form data
+  const validatedFields = LoginFormSchema.safeParse({
+    email: formData.get("Email"),
+    password: formData.get("Password"),
+  })
+
+  // If the form data is invalid, return the errors
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      success: false,
+    }
   }
-  return {
-    success: false,
-    message: "Unable to authenticate user",
-    attempts: prevState.attempts + 1,
+
+  // Extract the form data
+  const { email, password } = validatedFields.data
+
+  try {
+    // Connect to the database
+    await connectDB()
+
+    // Check if the user exists
+    const user = await User.findOne({ email })
+
+    // If the user does not exist, return error
+    if (!user) {
+      return {
+        message: "Could not authenticate user. Please try again.",
+        attempts: state.attempts + 1,
+      }
+    }
+
+    // Check if the provided password is correct
+    const correctPw = await user.isCorrectPassword(password)
+
+    // If the password is incorrect, return error
+    if (!correctPw) {
+      return {
+        message: "Could not authenticate user.",
+        attempts: state.attempts + 1,
+      }
+    }
+
+    // Create a session for the user
+    await createSession(user._id.toString())
+  } catch (error) {
+    return {
+      message: "Internal Server Error. Please try again.",
+      attempts: state.attempts + 1,
+    }
   }
+
+  // Redirect user to '/transmissions' page
+  redirect("/transmissions")
 }
 
 export async function logout() {
@@ -43,7 +91,6 @@ export async function signup(state: SignUpFormState, formData: FormData) {
     console.log(validatedFields.error.flatten().fieldErrors)
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      success: false,
     }
   }
 
@@ -59,7 +106,6 @@ export async function signup(state: SignUpFormState, formData: FormData) {
 
     if (userExists) {
       return {
-        success: false,
         message: "User already exists. Please update info and try again.",
       }
     }
@@ -70,7 +116,6 @@ export async function signup(state: SignUpFormState, formData: FormData) {
     // If user creation fails, return error
     if (!user) {
       return {
-        success: false,
         message:
           "An error occurred while creating your account. Please try again.",
       }
@@ -79,7 +124,7 @@ export async function signup(state: SignUpFormState, formData: FormData) {
     // Create a session for the user
     await createSession(user._id.toString())
   } catch (error) {
-    return { success: false, message: "Internal Server Error -" + error }
+    return { message: "Internal Server Error. Please try again." }
   }
 
   // Redirect user to '/transmissions' page
