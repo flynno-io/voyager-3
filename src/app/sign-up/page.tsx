@@ -14,7 +14,7 @@ export default function Page() {
   return (
     <section className="relative mx-5 my-10 flex h-screen flex-col items-center justify-start space-y-5">
       <div
-        className={`group absolute left-5 top-5 m-5 flex w-fit cursor-pointer items-center justify-start space-x-1`}
+        className={`group absolute left-0 top-0 -mt-5 flex w-fit cursor-pointer items-center justify-start space-x-1 md:left-5 md:top-5`}
       >
         <FontAwesomeIcon
           className={`m-1 transition-all duration-300 ease-in-out group-hover:me-3`}
