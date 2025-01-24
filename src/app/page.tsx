@@ -1,14 +1,14 @@
-import Button from "@/ui/button";
-import Link from "next/link";
-import PhotoStack from "@/ui/photo-stack";
-import VoyagerLogo from "@/ui/voyager-logo";
-import type { Metadata } from "next";
+import Button from "@/ui/button"
+import Link from "next/link"
+import PhotoStack from "@/ui/photo-stack"
+import VoyagerLogo from "@/ui/voyager-logo"
+import type { Metadata } from "next"
 
 export const meta: Metadata = {
   title: "Voyager III",
   description:
     "The best kept government secret has been unveiled — Voyager III.",
-};
+}
 
 export default function Page() {
   return (
@@ -90,5 +90,5 @@ export default function Page() {
         </section>
       </div>
     </main>
-  );
+  )
 }

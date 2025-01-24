@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons"
 
 interface errorProps {
-  hideError?: boolean
   message?: string
   errors?: { [key: string]: React.ReactNode }
 }
@@ -15,7 +14,11 @@ const fieldNames = {
   password: "Password",
 }
 
-export default function Error({ errors, message, hideError }: errorProps) {
+export default function Error({ errors, message }: errorProps) {
+  // Hide the error message if there are no errors
+  const hideError =
+    !message && (errors === undefined || Object.keys(errors).length === 0)
+
   function renderErrors(errors) {
     return Object.keys(errors).map((key) => {
       let element
@@ -40,7 +43,6 @@ export default function Error({ errors, message, hideError }: errorProps) {
     })
   }
 
-  // TODO: fix formatting on error modal
   return (
     <>
       <div
@@ -52,7 +54,7 @@ export default function Error({ errors, message, hideError }: errorProps) {
         )}
       >
         <div
-          className={`align-center flex w-full flex-row justify-start gap-2`}
+          className={`flex w-full flex-row items-center justify-start gap-2`}
         >
           <FontAwesomeIcon
             icon={faCircleInfo}
@@ -85,7 +87,7 @@ export default function Error({ errors, message, hideError }: errorProps) {
           )
         }
       </div>
-      {!hideError && <br />}
+      {errors && <br />}
     </>
   )
 }

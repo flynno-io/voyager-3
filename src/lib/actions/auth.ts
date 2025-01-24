@@ -1,8 +1,10 @@
 "use server"
 
 import { SignupFormSchema, SignUpFormState } from "@/lib/definitions"
+import { createSession, deleteSession } from "@/lib/session"
 import connectDB from "@/lib/connectDB"
 import { User } from "@/lib/models"
+import { redirect } from "next/navigation"
 
 // Login the user
 export async function login(prevState, formData) {
@@ -17,6 +19,12 @@ export async function login(prevState, formData) {
     message: "Unable to authenticate user",
     attempts: prevState.attempts + 1,
   }
+}
+
+export async function logout() {
+  await deleteSession()
+  console.log("User logged out")
+  redirect("/login")
 }
 
 // Create a new user and login
@@ -46,6 +54,7 @@ export async function signup(state: SignUpFormState, formData: FormData) {
 
     // Check if user exists, if yes, return error
     const userExists = await User.findOne({ email })
+
     if (userExists) {
       return {
         success: false,
@@ -65,9 +74,12 @@ export async function signup(state: SignUpFormState, formData: FormData) {
       }
     }
 
-    // Return success
-    return { success: true, message: "" }
+    // Create a session for the user
+    await createSession(user._id.toString())
   } catch (error) {
-    return { success: false, message: "Internal Server Error" }
+    return { success: false, message: "Internal Server Error -" + error }
   }
+
+  // Redirect user to '/transmissions' page
+  redirect("/transmissions")
 }

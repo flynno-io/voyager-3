@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { useActionState, useEffect, useState } from "react"
+import { useActionState, useState } from "react"
 import Link from "next/link"
 import Input from "@/ui/input"
 import Button from "@/ui/button"
@@ -13,22 +13,13 @@ export default function LoginForm() {
     email: "",
     password: "",
   })
+  // TODO: Update login form error handling and loginAction definition and use
   // Login Function to authenticate the user
   const [loginState, loginAction, isPending] = useActionState(login, {
     success: false,
     message: "",
     attempts: 0,
   })
-
-  // Redirect to blog page if login is successful
-  useEffect(() => {
-    function redirectToBlog() {
-      router.push("/transmissions")
-    }
-    if (loginState.success) {
-      redirectToBlog()
-    }
-  }, [loginState])
 
   // Function to Update the form values upon change
   function handleChange(name: string, value: string) {
@@ -77,7 +68,7 @@ export default function LoginForm() {
           Sign up
         </Link>
       </div>
-      <Error message={loginState.message} />
+      <Error errors={loginState?.errors} message={loginState?.message} />
     </div>
   )
 }

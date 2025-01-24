@@ -19,7 +19,6 @@ export default function SignUpForm() {
   const [signUpState, signUpAction, isPending] = useActionState(signup, {
     errors: {},
     message: "",
-    success: true,
   })
 
   // Function to Update the form values upon change
@@ -123,11 +122,7 @@ export default function SignUpForm() {
           Login
         </Link>
       </div>
-      <Error
-        errors={signUpState?.errors}
-        message={signUpState?.message}
-        hideError={signUpState?.success}
-      />
+      <Error errors={signUpState?.errors} message={signUpState?.message} />
     </div>
   )
 }

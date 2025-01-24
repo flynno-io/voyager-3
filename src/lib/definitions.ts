@@ -33,3 +33,8 @@ export type SignUpFormState =
       success?: boolean
     }
   | undefined
+
+export type SessionPayload = {
+  userId: string
+  expiresAt: Date
+}
