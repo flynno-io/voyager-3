@@ -13,8 +13,8 @@ export default function LoginForm() {
     email: "",
     password: "",
   })
-  // TODO: Update login form error handling and loginAction definition and use
-  // Login Function to authenticate the user
+
+  // Login the user
   const [loginState, loginAction, isPending] = useActionState(login, {
     errors: {},
     message: "",

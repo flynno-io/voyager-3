@@ -11,7 +11,7 @@ import connectDB from "@/lib/connectDB"
 import { User } from "@/lib/models"
 import { redirect } from "next/navigation"
 
-// Login the user
+// Log in the user
 export async function login(state: LoginFormState, formData: FormData) {
   // Validate the form data
   const validatedFields = LoginFormSchema.safeParse({
@@ -69,6 +69,7 @@ export async function login(state: LoginFormState, formData: FormData) {
   redirect("/transmissions")
 }
 
+// Log out the user
 export async function logout() {
   await deleteSession()
   redirect("/login")
