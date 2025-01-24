@@ -13,7 +13,7 @@ interface InputProps {
   handleChange: (id: string, value: string) => void
 }
 
-const Input = ({
+export default function Input({
   id,
   name,
   type,
@@ -22,7 +22,7 @@ const Input = ({
   isLogin,
   required,
   handleChange,
-}: InputProps) => {
+}: InputProps) {
   // Managed state: error
   const [error, setError] = useState("")
 
@@ -122,5 +122,3 @@ const Input = ({
     </div>
   )
 }
-
-export default Input
