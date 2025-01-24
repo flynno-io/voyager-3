@@ -18,7 +18,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   // TODO: Add fetch to get blog post data
   // TODO: Add error handling for fetch
   return (
-    <section className="items-left flex h-screen flex-col justify-start space-x-4 space-y-3 overflow-hidden">
+    <section className="items-left flex h-screen flex-col justify-start space-x-4 space-y-3 overflow-hidden overflow-y-scroll">
       <div className={`items-left ms-4 flex items-baseline gap-5 space-y-2`}>
         <h1 className={`text-4xl font-bold`}>{post.title}</h1>
         <div className={`text-2xl text-gray-400`}>#{post.number}</div>

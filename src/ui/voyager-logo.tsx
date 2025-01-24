@@ -13,7 +13,7 @@ export default function VoyagerLogo({ className }: { className?: string }) {
       <Link href="/">
         <p className="text-center text-[55px]">VOYAGER III</p>
         <p
-          className={`${spaceMono.className} text-md text-center text-gray-800`}
+          className={`${spaceMono.className} ${className} text-md text-center text-gray-800`}
         >
           The journey of one lifetime
         </p>
