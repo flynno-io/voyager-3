@@ -1,5 +1,3 @@
-"use client"
-
 import { useActionState, useState } from "react"
 import Link from "next/link"
 import Input from "@/ui/input"
