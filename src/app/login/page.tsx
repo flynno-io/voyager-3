@@ -2,6 +2,8 @@ import LoginForm from "@/ui/login-signup/login-form"
 import VoyagerLogo from "@/ui/voyager-logo"
 import type { Metadata } from "next"
 import Link from "next/link"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 
 export const meta: Metadata = {
   title: "Login",
@@ -11,12 +13,17 @@ export const meta: Metadata = {
 export default function Page() {
   return (
     <section className="relative mx-5 my-10 flex h-screen flex-col items-center justify-start space-y-5">
-      <Link
-        className={`absolute left-0 top-5 min-w-fit rounded-lg bg-blue-500 p-2 text-white`}
-        href="/"
+      <div
+        className={`group absolute left-5 top-5 m-5 flex w-fit cursor-pointer items-center justify-start space-x-1`}
       >
-        Home
-      </Link>
+        <FontAwesomeIcon
+          className={`m-1 transition-all duration-300 ease-in-out group-hover:me-3`}
+          icon={faChevronLeft}
+        />
+        <Link href="/" className="text-blue-500">
+          Back to Home
+        </Link>
+      </div>
       <VoyagerLogo />
       <h1
         className={`w-full px-10 text-center text-5xl font-bold leading-snug md:px-5`}
