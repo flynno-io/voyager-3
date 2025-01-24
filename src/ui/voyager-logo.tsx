@@ -1,5 +1,6 @@
-import { spaceMono, spaceGrotesk } from "@/fonts/*";
-import clsx from "clsx";
+import { spaceMono, spaceGrotesk } from "@/fonts/*"
+import Link from "next/link"
+import clsx from "clsx"
 
 export default function VoyagerLogo({ className }: { className?: string }) {
   return (
@@ -9,12 +10,14 @@ export default function VoyagerLogo({ className }: { className?: string }) {
         className,
       )}
     >
-      <p className="text-center text-[55px]">VOYAGER III</p>
-      <p
-        className={`${spaceMono.className} ${className} text-md text-center text-gray-800`}
-      >
-        The journey of one lifetime
-      </p>
+      <Link href="/">
+        <p className="text-center text-[55px]">VOYAGER III</p>
+        <p
+          className={`${spaceMono.className} ${className} text-md text-center text-gray-800`}
+        >
+          The journey of one lifetime
+        </p>
+      </Link>
     </div>
-  );
+  )
 }
