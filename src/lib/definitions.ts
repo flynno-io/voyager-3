@@ -60,3 +60,20 @@ export type SessionPayload = {
   userId: string
   expiresAt: Date
 }
+
+export interface IPostCard {
+  id: string
+  title: string
+  description: string
+  number: number
+}
+
+export interface IPost {
+  id: string
+  title: string
+  description: string
+  number: number
+  author: string
+  sol: number
+  content: string
+}

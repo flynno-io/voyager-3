@@ -1,15 +1,14 @@
+"use client"
+
+import { use } from "react"
 import PostCard from "@/ui/transmissions/post-card"
-import { fetchPosts } from "@/lib/data"
+import { IPostCard } from "@/lib/definitions"
 
-export default async function Posts() {
-  const posts = await fetchPosts()
-
-  if (!posts) {
-    return <div>Loading Posts...</div>
-  }
+export default function Posts({ posts }: { posts: Promise<IPostCard[]> }) {
+  const allPosts = use(posts)
 
   function renderPosts() {
-    return posts.map((post) => {
+    return allPosts.map((post) => {
       return (
         <PostCard
           key={post.id}
