@@ -23,7 +23,7 @@ export async function login(state: LoginFormState, formData: FormData) {
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      success: false,
+      attempts: 0,
     }
   }
 
@@ -61,7 +61,7 @@ export async function login(state: LoginFormState, formData: FormData) {
   } catch (error) {
     return {
       message: "Internal Server Error. Please try again.",
-      attempts: state.attempts + 1,
+      attempts: 0,
     }
   }
 
@@ -71,7 +71,6 @@ export async function login(state: LoginFormState, formData: FormData) {
 
 export async function logout() {
   await deleteSession()
-  console.log("User logged out")
   redirect("/login")
 }
 
@@ -88,7 +87,6 @@ export async function signup(state: SignUpFormState, formData: FormData) {
 
   // If the form data is invalid, return the errors
   if (!validatedFields.success) {
-    console.log(validatedFields.error.flatten().fieldErrors)
     return {
       errors: validatedFields.error.flatten().fieldErrors,
     }

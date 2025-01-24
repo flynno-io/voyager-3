@@ -24,7 +24,7 @@ export default function Page() {
           Back to Home
         </Link>
       </div>
-      <VoyagerLogo />
+      <VoyagerLogo className={`mb-5`} />
       <h1
         className={`px-10 text-center text-5xl font-bold leading-snug md:px-5`}
       >

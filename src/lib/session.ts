@@ -59,6 +59,5 @@ export async function updateSession() {
 
 export async function deleteSession() {
   const cookieStore = await cookies()
-  console.log(cookieStore.get("session"))
   cookieStore.delete("session")
 }

@@ -53,6 +53,11 @@ export default function LoginForm() {
           type="password"
           handleChange={handleChange}
         />
+        {loginState.attempts >= 3 && (
+          <Link href="/forgot-password" className={`text-blue-500`}>
+            Forgot password?
+          </Link>
+        )}
         <Button
           className={`disabled:opacity-50 disabled:hover:cursor-wait`}
           disabled={isPending}

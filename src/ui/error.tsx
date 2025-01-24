@@ -88,7 +88,7 @@ export default function Error({ errors, message }: errorProps) {
           )
         }
       </div>
-      {errors && <br />}
+      <br />
     </>
   )
 }
