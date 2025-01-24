@@ -39,15 +39,15 @@ export default function Page() {
             </span>
             <p className={`text-md text-justify font-light`}>
               The Voyager program was setup to explore the outer reaches of
-              space but unbeknownst to the public, the U.S. government had
-              created a third probe, a maned probe, called the Voyager III.
-              Built and launched in secret, its mission was to travel to Proxima
-              Centauri b, the closest star to Earth, and determine its
-              feasability for human life.
+              space with the launch of two probes, but unbeknownst to the
+              public, the U.S. government had created a third probe, a manned
+              probe, called the Voyager III. Built and launched in secret, its
+              mission was to travel to Proxima Centauri b, the closest star to
+              Earth, and determine its feasability for human life.
             </p>
             <p className={`text-md text-justify font-light`}>
               Launched in 1977, the Voyager III mission has been en route to
-              Proxima Centauri b for the past 40 years. Recently, the U.S.
+              Proxima Centauri b for the past 48 years. Recently, the U.S.
               Virginia Satellite towers intercepted a scrambled transmission
               from the Voyager III spacecraft. To bring this monumental
               discovery to light, I, Dr. John H. Perkins, have created this blog

@@ -1,10 +1,8 @@
 import { NextResponse } from "next/server"
 import { decrypt } from "@/lib/session"
 
-// Define the protected and public routes
-const publicRoutes = ["/login", "/sign-up", "/"]
-
 // Define paths that don't require authentication
+const publicRoutes = ["/login", "/sign-up", "/"]
 
 export async function middleware(request) {
   const { pathname } = request.nextUrl // Get the current URL
