@@ -35,10 +35,12 @@ export async function signup(state: SignUpFormState, formData: FormData) {
     lastName: formData.get("Last Name"),
     email: formData.get("Email"),
     password: formData.get("Password"),
+    confirm: formData.get("Confirm"),
   })
 
   // If the form data is invalid, return the errors
   if (!validatedFields.success) {
+    console.log(validatedFields.error.flatten().fieldErrors)
     return {
       errors: validatedFields.error.flatten().fieldErrors,
       success: false,

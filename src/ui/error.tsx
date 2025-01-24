@@ -12,6 +12,7 @@ const fieldNames = {
   lastName: "Last Name",
   email: "Email",
   password: "Password",
+  confirm: "Confirm",
 }
 
 export default function Error({ errors, message }: errorProps) {
