@@ -10,7 +10,7 @@ interface InputProps {
   valueToCompare?: string
   isLogin?: boolean
   required?: boolean
-  handleChange: Function
+  handleChange: (id: string, value: string) => void
 }
 
 const Input = ({
@@ -27,30 +27,28 @@ const Input = ({
   const [error, setError] = useState("")
 
   // Function to validate each input value
-  function validate(name: string, value: string, OtherValue?: string) {
-    if (value === "") {
-      // Check if the input is empty
+  function validate(name: string, value: string, otherValue?: string) {
+    if (!value) {
       setError("This field is required")
-    } else if (name === "firstName" || name === "lastName") {
-      const nameRegex = /^[a-zA-Z]+$/
-      !nameRegex.test(value)
-        ? setError("Must contain only letters")
-        : setError("")
-    } else if (name === "email") {
-      // Check if the input is a valid email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-      !emailRegex.test(value) ? setError("Invalid email address") : setError("")
-    } else if (name === "password" && !isLogin) {
-      // Check if the input is a strong password
-      value.length <= 8
-        ? setError("Password must be 8 or more characters")
-        : setError("")
-    } else if (name === "confirm") {
-      // Check if the input matches the password
-      value !== OtherValue ? setError("Passwords do not match") : setError("")
-    } else {
-      setError("")
+      return
     }
+
+    const validators: { [key: string]: (value: string) => string } = {
+      firstName: (value) =>
+        /^[a-zA-Z]+$/.test(value) ? "" : "Must contain only letters",
+      lastName: (value) =>
+        /^[a-zA-Z]+$/.test(value) ? "" : "Must contain only letters",
+      email: (value) =>
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? "" : "Invalid email address",
+      password: (value) =>
+        !isLogin && value.length <= 8
+          ? "Password must be 8 or more characters"
+          : "",
+      confirm: (value) =>
+        value !== otherValue ? "Passwords do not match" : "",
+    }
+
+    setError(validators[name] ? validators[name](value) : "")
   }
 
   // Function to update state with input values

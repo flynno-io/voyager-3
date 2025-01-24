@@ -5,7 +5,7 @@ import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
 
-export const meta: Metadata = {
+export const metadata: Metadata = {
   title: "Login",
   description: "Login to continue following the Voyager III mission.",
 }

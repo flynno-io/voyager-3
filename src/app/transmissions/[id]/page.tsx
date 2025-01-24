@@ -3,7 +3,7 @@ import type { Metadata } from "next"
 import ReactMarkdown from "react-markdown"
 
 // TODO: dynamically import the blog post meta data
-export const meta: Metadata = {
+export const metadata: Metadata = {
   title: "Blog Slug",
   description: "Description of the blog slug page",
 }

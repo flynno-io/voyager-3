@@ -1,5 +1,5 @@
 import connectDB from "@/lib/connectDB"
-import { Post, User } from "@/lib/models"
+import { Post } from "@/lib/models"
 import mongoose from "mongoose"
 
 // Fetch all posts

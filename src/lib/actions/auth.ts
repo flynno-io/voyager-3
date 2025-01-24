@@ -59,6 +59,7 @@ export async function login(state: LoginFormState, formData: FormData) {
     // Create a session for the user
     await createSession(user._id.toString())
   } catch (error) {
+    console.error(error)
     return {
       message: "Internal Server Error. Please try again.",
       attempts: 0,
@@ -123,6 +124,7 @@ export async function signup(state: SignUpFormState, formData: FormData) {
     // Create a session for the user
     await createSession(user._id.toString())
   } catch (error) {
+    console.error(error)
     return { message: "Internal Server Error. Please try again." }
   }
 

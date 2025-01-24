@@ -4,7 +4,7 @@ import PhotoStack from "@/ui/photo-stack"
 import VoyagerLogo from "@/ui/voyager-logo"
 import type { Metadata } from "next"
 
-export const meta: Metadata = {
+export const metadata: Metadata = {
   title: "Voyager III",
   description:
     "The best kept government secret has been unveiled — Voyager III.",

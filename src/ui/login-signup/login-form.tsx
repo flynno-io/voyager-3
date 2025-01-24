@@ -1,5 +1,5 @@
 "use client"
-import { useRouter } from "next/navigation"
+
 import { useActionState, useState } from "react"
 import Link from "next/link"
 import Input from "@/ui/input"
@@ -8,7 +8,6 @@ import Error from "@/ui/error"
 import { login } from "@/lib/actions/auth"
 
 export default function LoginForm() {
-  const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -68,7 +67,7 @@ export default function LoginForm() {
         </Button>
       </form>
       <div className={`my-2 ms-2 flex flex-row gap-2 text-sm`}>
-        <p>Don't have an account?</p>
+        <p>Don&apos;t have an account?</p>
         <Link href="/sign-up" className={`text-blue-500`}>
           Sign up
         </Link>

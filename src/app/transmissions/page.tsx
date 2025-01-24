@@ -1,11 +1,10 @@
-import LoginForm from "@/ui/login-signup/login-form";
-import Posts from "@/ui/transmissions/posts";
-import type { Metadata } from "next";
+import Posts from "@/ui/transmissions/posts"
+import type { Metadata } from "next"
 
-export const meta: Metadata = {
+export const metadata: Metadata = {
   title: "Login",
   description: "Login to continue following the Voyager III mission.",
-};
+}
 
 export default async function Page() {
   return (
@@ -14,5 +13,5 @@ export default async function Page() {
       <h1 className={`mb-4 text-4xl font-bold`}>Transmissions</h1>
       <Posts />
     </section>
-  );
+  )
 }

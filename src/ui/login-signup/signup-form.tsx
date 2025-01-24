@@ -1,6 +1,6 @@
 "use client"
-import { useRouter } from "next/navigation"
-import { useActionState, useEffect, useState } from "react"
+
+import { useActionState, useState } from "react"
 import Link from "next/link"
 import Input from "@/ui/input"
 import Button from "@/ui/button"
@@ -8,7 +8,6 @@ import Error from "@/ui/error"
 import { signup } from "@/lib/actions/auth"
 
 export default function SignUpForm() {
-  const router = useRouter()
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
