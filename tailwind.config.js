@@ -4,7 +4,7 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     backgroundImage: {
-      "blog-hero": "url('/voyager_xlg.jpg')",
+      "blog-hero": "url('/images/jupiter_atmosphere_op.jpg')",
     },
     extend: {
       transitionDuration: {
@@ -47,4 +47,4 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/forms")],
-};
+}
